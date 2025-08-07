@@ -1,8 +1,14 @@
+<div class="layout-container">
 
-<app-header></app-header>
+    <app-header style="background-color: red;"></app-header>
 
-<app-sidebar></app-sidebar>
 
-<router-outlet></router-outlet>
+    <div class="body-container">
 
-<app-footer></app-footer>
+        <app-sidebar style="background-color: rgb(0, 255, 34);"></app-sidebar>
+
+        <router-outlet style="background-color: rgb(0, 55, 255);"></router-outlet>
+    </div>
+
+    <app-footer style="background-color: rgb(179, 255, 0);"></app-footer>
+</div>
