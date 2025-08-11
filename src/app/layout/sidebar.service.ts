@@ -4,9 +4,19 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class SidebarService {
-fechar() {
-throw new Error('função criada para retirar erro de compilação');
-}
-aberto: boolean = false;
+  aberto: boolean = false;
+
   constructor() { }
+
+  fechar() {
+    this.aberto = false;
+  }
+
+  abrir() {
+    this.aberto = true;
+  }
+
+  toggle() {
+    this.aberto = !this.aberto;
+  }
 }
