@@ -1,7 +1,7 @@
-<h1>adasdsadsad</h1>
+<h1>Conheca usuarios</h1>
 
 <!-- Renderiza lista de usuários apenas se NÃO receber [user] -->
-<!-- <div class="usuarios-lista" *ngIf="!user">
+<div class="cards-geral" *ngIf="!user">
   <div class="user-card" *ngFor="let user of usuarios">
     <div class="user-photo">
       <img
@@ -13,7 +13,7 @@
       <button
         class="like-btn"
         type="button"
-        (click)="curtirUsuario(user); $event.stopPropagation()"
+        (click)="curtirUsuario(user)"
         [class.liked]="user.isLiked"
       >
         <svg
@@ -29,6 +29,8 @@
         </svg>
       </button>
     </div>
+
+
     <div class="user-info">
       <h3 class="user-name">{{ user.nome_primary }}</h3>
       <div class="user-details">
@@ -40,60 +42,30 @@
           <i class="age-icon">🎂</i>
           {{ calcularIdade(user.nascimento) }} anos
         </span>
-        <span *ngIf="user.localizacao" class="user-location">
-          <i class="location-icon">📍</i>
-          {{ user.localizacao }}
-        </span>
+        <p *ngIf="user.bio" class="user-bio">{{ user.bio }}</p>
       </div>
-      <p *ngIf="user.bio" class="user-bio">{{ user.bio }}</p>
     </div>
-  </div>
-</div> -->
+    <div class="card-actions">
+        <button
+          class="action-btn primary"
+          type="button"
+          (click)="navegarUsuario(user)"
+        >
+          <svg
+            class="btn-icon"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path d="M9 11l3 3l8-8"></path>
+            <path
+              d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"
+            ></path>
+          </svg>
+          Conhecer
+        </button>
+      </div>
 
-<!-- Renderiza card único se receber [user] -->
-<!-- <div class="user-card" *ngIf="user">
-  <div class="user-photo">
-    <img
-      [src]="'http://localhost:3000/uploads/usuarios/' + user.foto1"
-      [alt]="user.nome_primary"
-      (click)="navegarUsuario(user)"
-      class="main-image"
-    />
-    <button
-      class="like-btn"
-      type="button"
-      (click)="curtirUsuario(user); $event.stopPropagation()"
-      [class.liked]="user.isLiked"
-    >
-      <svg
-        class="heart-icon"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2"
-      >
-        <path
-          d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"
-        ></path>
-      </svg>
-    </button>
   </div>
-  <div class="user-info">
-    <h3 class="user-name">{{ user.nome_primary }}</h3>
-    <div class="user-details">
-      <span *ngIf="user.genero" class="user-gender">
-        <i class="gender-icon">👤</i>
-        {{ user.genero }}
-      </span>
-      <span *ngIf="user.nascimento" class="user-age">
-        <i class="age-icon">🎂</i>
-        {{ calcularIdade(user.nascimento) }} anos
-      </span>
-      <span *ngIf="user.localizacao" class="user-location">
-        <i class="location-icon">📍</i>
-        {{ user.localizacao }}
-      </span>
-    </div>
-    <p *ngIf="user.bio" class="user-bio">{{ user.bio }}</p>
-  </div>
-</div> -->
+</div>

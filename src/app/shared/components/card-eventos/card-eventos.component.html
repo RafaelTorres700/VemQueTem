@@ -1,1 +1,155 @@
 <p>card-eventos works!</p>
+
+
+<!-- Card de Evento -->
+<div class="eventos-page main-content">
+  <div class="page-header">
+    <div class="header">
+      <h2>
+        <i class="fas fa-calendar-alt"></i>
+        Adquira Eventos Incríveis
+      </h2>
+      <p>Após aquisição do evento, habilitamos a opção de convidar pessoas</p>
+
+      <!-- Botão de teste temporário para debug -->
+      <!-- <button
+        class="login-btn"
+        (click)="testarModal()"
+        style="margin-top: 10px; max-width: 200px"
+      >
+        🔧 Testar Modal PIX
+      </button> -->
+    </div>
+  </div>
+
+  <div class="eventos-grid component-wrapper">
+    <div class="event-card" *ngFor="let evento of eventos || []">
+      <!-- Container da imagem principal -->
+      <div class="image-container">
+        <img
+          [src]="
+            'http://localhost:3000/uploads/eventos/' + evento.imagem_evento
+          "
+          [alt]="evento.nome_evento"
+          class="main-image"
+        />
+
+        <!-- Badge de status -->
+        <div class="highlight-badge" *ngIf="evento.status">
+          <span class="badge-text">{{ evento.status }}</span>
+        </div>
+        <!-- Botão de favoritos (opcional) -->
+        <button class="like-btn" type="button" title="Adicionar aos favoritos">
+          <svg
+            class="heart-icon"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path
+              d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"
+            ></path>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Conteúdo do card -->
+      <div class="card-content">
+        <!-- Header com nome -->
+        <div class="card-header">
+          <h3 class="event-title">{{ evento.nome_evento }}</h3>
+          <div class="price-tag">
+            <span class="price-value"
+              >R$ {{ evento.valor | number : "1.2-2" }}</span
+            >
+          </div>
+        </div>
+
+        <!-- Informações principais -->
+        <div class="event-details">
+          <div class="event-detail">
+            <svg
+              class="detail-icon"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+              <line x1="16" y1="2" x2="16" y2="6"></line>
+              <line x1="8" y1="2" x2="8" y2="6"></line>
+              <line x1="3" y1="10" x2="21" y2="10"></line>
+            </svg>
+            <span class="event-label">Data:</span>
+            <span class="event-value">{{
+              evento.data_evento | date : "dd/MM/yyyy"
+            }}</span>
+          </div>
+
+          <div class="event-detail">
+            <svg
+              class="detail-icon"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <circle cx="12" cy="12" r="10"></circle>
+              <polyline points="12,6 12,12 16,14"></polyline>
+            </svg>
+            <span class="event-label">Horário:</span>
+            <span class="event-value"
+              >{{ evento.hora_inicio }} - {{ evento.hora_final }}</span
+            >
+          </div>
+
+          <div class="event-detail description" *ngIf="evento.beneficios">
+            <svg
+              class="detail-icon"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path
+                d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
+              ></path>
+            </svg>
+            <span class="event-label">Benefícios:</span>
+            <span class="event-value">{{ evento.beneficios }}</span>
+          </div>
+        </div>
+
+        <!-- Ações do card -->
+        <div class="card-actions">
+          <button
+            class="action-btn primary"
+            type="button"
+                     >
+            <svg
+              class="btn-icon"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path d="M9 11l3 3l8-8"></path>
+              <path
+                d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"
+              ></path>
+            </svg>
+            Reservar Agora
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Estado vazio -->
+  <div *ngIf="!eventos || eventos.length === 0" class="empty-state">
+    <i class="fas fa-calendar"></i>
+    <h3>Nenhum evento encontrado</h3>
+    <p>Seja o primeiro a criar um evento!</p>
+  </div>
+
+</div>

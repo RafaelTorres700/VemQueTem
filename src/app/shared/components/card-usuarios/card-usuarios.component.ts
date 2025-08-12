@@ -22,43 +22,43 @@ export class CardUsuariosComponent {
 
   constructor(private router: Router, private usuariosService: UsuariosService) { }
 
-  // ngOnInit(): void {
-  //   // Só busca todos os usuários se NÃO receber um user via input
-  //   if (!this.user) {
-  //     this.usuariosService.getUsuarios().subscribe((dados: any[]) => {
-  //       this.usuarios = dados;
-  //     }, (erro) => {
-  //       console.error('Erro ao buscar usuários:', erro);
-  //     });
-  //   }
-  // }
+  ngOnInit(): void {
+    // Só busca todos os usuários se NÃO receber um user via input
+    if (!this.user) {
+      this.usuariosService.getUsuarios().subscribe((dados: any[]) => {
+        this.usuarios = dados;
+      }, (erro) => {
+        console.error('Erro ao buscar usuários:', erro);
+      });
+    }
+  }
 
-  // contador = 0;
+  contador = 0;
 
-  // calcularIdade(nascimento?: string): number | null {
-  //   const data = nascimento || this.user?.nascimento;
-  //   if (!data) return null;
-  //   const hoje = new Date();
-  //   const nascimentoDate = new Date(data);
-  //   let idade = hoje.getFullYear() - nascimentoDate.getFullYear();
-  //   const mesAtual = hoje.getMonth();
-  //   const mesNascimento = nascimentoDate.getMonth();
-  //   if (mesAtual < mesNascimento || (mesAtual === mesNascimento && hoje.getDate() < nascimentoDate.getDate())) {
-  //     idade--;
-  //   }
-  //   return idade;
-  // }
+  calcularIdade(nascimento?: string): number | null {
+    const data = nascimento || this.user?.nascimento;
+    if (!data) return null;
+    const hoje = new Date();
+    const nascimentoDate = new Date(data);
+    let idade = hoje.getFullYear() - nascimentoDate.getFullYear();
+    const mesAtual = hoje.getMonth();
+    const mesNascimento = nascimentoDate.getMonth();
+    if (mesAtual < mesNascimento || (mesAtual === mesNascimento && hoje.getDate() < nascimentoDate.getDate())) {
+      idade--;
+    }
+    return idade;
+  }
 
 
-  // navegarUsuario(user: any) {
-  //   this.usuariosService.usuarioSendoVisto = user;
-  //   this.router.navigate(['/usuarios', { id: user.id }]);
-  // }
+  navegarUsuario(user: any) {
+    this.usuariosService.usuarioSendoVisto = user;
+    this.router.navigate(['/usuarios', { id: user.id }]);
+  }
 
-  // curtirUsuario(usuario: any): void {
-  //   usuario.isLiked = !usuario.isLiked;
-  //   this.curtir.emit(usuario.id);
-  // }
+  curtirUsuario(usuario: any): void {
+    usuario.isLiked = !usuario.isLiked;
+    this.curtir.emit(usuario.id);
+  }
 
 
 }
