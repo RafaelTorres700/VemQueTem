@@ -24,11 +24,11 @@ export class UsuariosService {
 
   // Método para obter a lista de usuários do backend
   getUsuarios(): Observable<Usuario[]> {
-    return this.http.get<any>('http://localhost:3000/api/usuarios').pipe(
-      map(res => res.data)
-    );
+    return this.http.get<any>('http://localhost:3000/api/usuarios')
+    .pipe(map(res => res.data));
   }
 
+  // Outros métodos (criar, atualizar, deletar) podem ser adicionados conforme necessidade
   curtir(): void {
     // Lógica para curtir usuário
     console.log('Usuário curtido');

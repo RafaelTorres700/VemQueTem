@@ -67,5 +67,9 @@
         </button>
       </div>
 
+      <div *ngIf="!user || usuarios.length === 0" class="empty-state">
+    <i class="fas fa-calendar"></i>
+    <h3>Nenhum usuário encontrado</h3>
+    <p>Seja o primeiro a criar um usuário!</p>
   </div>
 </div>

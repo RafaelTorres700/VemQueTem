@@ -42,7 +42,7 @@
         </span>
       </div>
 
-    
+
         <span class="location-text">{{ estab.endereco }}, {{ estab.cidade }}, {{ estab.estado }}</span>
       </div>
 
@@ -70,6 +70,13 @@
           Conhecer
         </button>
       </div>
+
+      <div *ngIf="!estab || estabelecimentos.length === 0" class="empty-state">
+    <i class="fas fa-calendar"></i>
+    <h3>Nenhum estabelecimento encontrado</h3>
+    <p>Seja o primeiro a criar um estabelecimento!</p>
+
     </div>
+
   </div>
 </div>

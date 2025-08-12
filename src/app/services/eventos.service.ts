@@ -22,15 +22,20 @@ export interface Evento {
   providedIn: 'root'
 })
 export class EventosService {
+  // Variável para armazenar o evento que está sendo visualizado
   eventoSendoVisto: Evento | null = null;
 
   constructor(private http: HttpClient) { }
 
   getEventos(): Observable<Evento[]> {
-    return this.http.get<{ data: Evento[] }>('http://localhost:3000/api/eventos').pipe(map(res => res.data));
+    return this.http.get<any>('http://localhost:3000/api/eventos')
+    .pipe(map(res => res.data));
 
   }
 
   // Outros métodos (criar, atualizar, deletar) podem ser adicionados conforme necessidade
-
+  curtir(): void {
+    // Lógica para curtir evento
+    console.log('Evento curtido');
+  }
 }

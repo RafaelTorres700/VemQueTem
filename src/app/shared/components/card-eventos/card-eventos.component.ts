@@ -1,7 +1,7 @@
-import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
+import { Component, Input,  Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
-import { EventosService, Evento } from '../../../services/eventos.service';
+import { EventosService } from '../../../services/eventos.service';
 
 
 @Component({
@@ -11,9 +11,10 @@ import { EventosService, Evento } from '../../../services/eventos.service';
   templateUrl: './card-eventos.component.html',
   styleUrls: ['./card-eventos.component.scss']
 })
-export class CardEventosComponent implements OnInit {
-  @Input() evento: any[] = [];
+export class CardEventosComponent {
+  @Input() evento: any;
   @Output() curtir = new EventEmitter<string>();
+  @Output() reservar = new EventEmitter<string>();
   eventos: any[] = [];
 
 
@@ -21,26 +22,32 @@ export class CardEventosComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private eventosService: EventosService,
+    private eventosService: EventosService
   ) { }
 
   ngOnInit(): void {
-    // Busca todos os eventos ao acessar a rota
-    this.eventosService.getEventos().subscribe((dados: Evento[]) => {
-      this.eventos = dados;
-    }, (erro) => {
-      console.error('Erro ao buscar eventos:', erro);
-    });
+    if (!this.evento) {
+      this.eventosService.getEventos().subscribe({
+        next: (dados: any[]) => {
+          this.eventos = dados;
+        },
+        error: (erro) => {
+          console.error('Erro ao buscar eventos:', erro);
+        }
+      });
+    }
+  }
+
+
+  navegarEvento(evento: any) {
+    this.eventosService.eventoSendoVisto = evento;
+    this.router.navigate(['/eventos', { id: evento.id }]);
   }
 
   curtirEvento(evento: any): void {
-    console.log('Curtindo evento:', evento.id);
+    evento.isLiked = !evento.isLiked;
     this.curtir.emit(evento.id);
   }
 
-  navegarEvento(evento: any): void {
-    console.log('Navegando para o evento:', evento);
-    this.eventosService.eventoSendoVisto = evento;
-    this.router.navigate(['/eventos']);
-  }
 }
+

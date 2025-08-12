@@ -24,6 +24,7 @@ export interface Estabelecimento {
   providedIn: 'root'
 })
 export class EstabelecimentosService {
+  // Variável para armazenar o estabelecimento que está sendo visualizado
   estabelecimentoSendoVisto: any = null;
 
   constructor(private http: HttpClient) { }
@@ -33,5 +34,11 @@ getEstabelecimentos(): Observable<Estabelecimento[]> {
   return this.http.get<any>('http://localhost:3000/api/estabelecimentos')
     .pipe(map(res => res.data));
 }
+
+// Outros métodos (criar, atualizar, deletar) podem ser adicionados conforme necessidade
+  curtir(): void {
+    // Lógica para curtir estabelecimento
+    console.log('Estabelecimento curtido');
+  }
 
 }

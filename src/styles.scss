@@ -27,6 +27,11 @@ $mobile: 768px;
 $tablet: 1024px;
 $desktop: 1200px;
 
+img{
+  width: 100px;
+  height: 100px;
+}
+
 // Mixins
 @mixin glass-effect {
   background: rgba(255, 255, 255, 0.1);
