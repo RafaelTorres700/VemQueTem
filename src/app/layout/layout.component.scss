@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 :host {
   display: block;
   min-height: 100vh;
@@ -21,3 +22,16 @@ router-outlet {
     padding-bottom: 200px; // Mais espaço no mobile onde footer vira coluna
   }
 }
+=======
+.layout-container{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    justify-content: space-between;
+}
+
+.body-container{
+    display: flex;
+    
+}
+>>>>>>> d3d215014e0210a7f93e5436da8a567faa7c8af1
