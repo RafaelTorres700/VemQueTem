@@ -5,6 +5,7 @@
 // Variables - Design System
 $primary-purple: #6a4c93;
 $secondary-purple: #8b5fbf;
+$body: #e4f1f8;
 $accent-neon: #00f5ff;
 $accent-pink: #ff006e;
 $dark-bg: #0a0a0f;
@@ -60,8 +61,8 @@ html {
 
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: $dark-bg;
-  color: $text-primary;
+  background: $text-primary;
+  color: $dark-bg;
   min-height: 100vh;
   line-height: 1.6;
 
@@ -72,9 +73,8 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background: radial-gradient(circle at 30% 20%, rgba(106, 76, 147, 0.3) 0%, transparent 50%),
-      radial-gradient(circle at 70% 80%, rgba(255, 0, 110, 0.2) 0%, transparent 50%);
-    z-index: -1;
+    background: $body;
+     z-index: -1;
     pointer-events: none;
   }
 

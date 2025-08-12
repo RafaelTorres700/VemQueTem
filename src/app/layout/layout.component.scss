@@ -1,0 +1,23 @@
+:host {
+  display: block;
+  min-height: 100vh;
+}
+
+// Compensar espaço do header e footer fixos
+router-outlet {
+  display: block;
+  padding-top: 80px; // Espaço para o header
+  padding-bottom: 120px; // Espaço para o footer
+  min-height: calc(100vh - 200px);
+}
+
+.layout-container{
+
+}
+
+// Ajuste mobile para footer responsivo
+@media (max-width: 768px) {
+  router-outlet {
+    padding-bottom: 200px; // Mais espaço no mobile onde footer vira coluna
+  }
+}
