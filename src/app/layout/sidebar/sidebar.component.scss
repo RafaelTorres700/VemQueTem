@@ -3,7 +3,6 @@
   top: 0;
   left: 0;
   height: 100vh;
-<<<<<<< HEAD
   width: 270px;
   background: #23272f;
   color: #fff;
@@ -13,23 +12,11 @@
   z-index: 1200;
   display: flex;
   flex-direction: column;
-=======
-  width: 280px;
-  background: var(--sidebar-color);
-  color: var(--text-color);
-  z-index: 1000;
-  transform: translateX(-100%);
-  transition: transform 0.3s ease-in-out;
-  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.15);
-  overflow-y: auto;
-  font-family: 'Roboto', sans-serif;
->>>>>>> d3d215014e0210a7f93e5436da8a567faa7c8af1
 
   &.sidebar-open {
     transform: translateX(0);
   }
 
-<<<<<<< HEAD
   .sidebar-header {
     display: flex;
     align-items: center;
@@ -104,118 +91,6 @@
             }
           }
         }
-=======
-  // Scrollbar customizada
-  &::-webkit-scrollbar {
-    width: 6px;
-  }
-
-  &::-webkit-scrollbar-track {
-    background: rgba(255, 255, 255, 0.1);
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.3);
-    border-radius: 3px;
-
-    &:hover {
-      background: rgba(255, 255, 255, 0.4);
-    }
-  }
-}
-
-.sidebar-header {
-  padding: 1.5rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  h3 {
-    margin: 0;
-    color: var(--text-color);
-    font-size: 1.2rem;
-    font-weight: 500;
-  }
-
-  .close-btn {
-    background: transparent;
-    border: none;
-    color: var(--text-color);
-    cursor: pointer;
-    padding: 0.5rem;
-    border-radius: 50%;
-    transition: background 0.2s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    &:hover {
-      background: rgba(255, 255, 255, 0.1);
-      transform: none;
-      box-shadow: none;
-    }
-
-    .material-icons {
-      font-size: 20px;
-    }
-  }
-}
-
-.sidebar-nav {
-  padding: 1rem 0;
-
-  ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-
-  li {
-    margin: 0.25rem 0;
-  }
-
-  .nav-link {
-    display: flex;
-    align-items: center;
-    padding: 0.875rem 1.5rem;
-    color: var(--text-color);
-    text-decoration: none;
-    transition: all 0.2s ease;
-    border-left: 3px solid transparent;
-    position: relative;
-
-    &:hover {
-      background: rgba(255, 255, 255, 0.08);
-      border-left-color: var(--background-color);
-      color: var(--primary-color);
-    }
-
-    &:active {
-      background: rgba(255, 255, 255, 0.12);
-      transform: translateX(2px);
-    }
-
-    .material-icons {
-      font-size: 20px;
-      margin-right: 0.875rem;
-      opacity: 0.8;
-    }
-
-    span {
-      font-size: 0.95rem;
-      font-weight: 400;
-    }
-
-    // Estado ativo/selecionado
-    &.active {
-      background: rgba(34, 112, 180, 0.15);
-      border-left-color: var(--background-color);
-      color: var(--primary-color);
-
-      .material-icons {
-        opacity: 1;
->>>>>>> d3d215014e0210a7f93e5436da8a567faa7c8af1
       }
     }
   }
@@ -227,7 +102,6 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-<<<<<<< HEAD
   background: rgba(30, 34, 40, 0.45);
   opacity: 0;
   pointer-events: none;
@@ -246,63 +120,5 @@
     width: 85vw;
     min-width: 0;
     max-width: 350px;
-=======
-  background: rgba(0, 0, 0, 0.5);
-  z-index: 999;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.3s ease, visibility 0.3s ease;
-
-  &.sidebar-overlay-active {
-    opacity: 1;
-    visibility: visible;
-  }
-}
-
-// Responsividade
-@media (max-width: 768px) {
-  .sidebar {
-    width: 260px;
-  }
-
-  .sidebar-nav .nav-link {
-    padding: 0.75rem 1.25rem;
-
-    .material-icons {
-      font-size: 18px;
-      margin-right: 0.75rem;
-    }
-
-    span {
-      font-size: 0.9rem;
-    }
-  }
-}
-
-@media (max-width: 480px) {
-  .sidebar {
-    width: 240px;
-  }
-
-  .sidebar-header {
-    padding: 1.25rem;
-
-    h3 {
-      font-size: 1.1rem;
-    }
-  }
-
-  .sidebar-nav .nav-link {
-    padding: 0.625rem 1rem;
-
-    .material-icons {
-      font-size: 16px;
-      margin-right: 0.625rem;
-    }
-
-    span {
-      font-size: 0.85rem;
-    }
->>>>>>> d3d215014e0210a7f93e5436da8a567faa7c8af1
   }
 }

@@ -1,4 +1,4 @@
-import { Component, Input,  Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { EventosService } from '../../../services/eventos.service';
@@ -11,13 +11,11 @@ import { EventosService } from '../../../services/eventos.service';
   templateUrl: './card-eventos.component.html',
   styleUrls: ['./card-eventos.component.scss']
 })
-export class CardEventosComponent {
+export class CardEventosComponent implements OnInit {
   @Input() evento: any;
   @Output() curtir = new EventEmitter<string>();
   @Output() reservar = new EventEmitter<string>();
   eventos: any[] = [];
-
-
 
 
   constructor(
@@ -30,6 +28,7 @@ export class CardEventosComponent {
       this.eventosService.getEventos().subscribe({
         next: (dados: any[]) => {
           this.eventos = dados;
+          console.log('Eventos carregados:', this.eventos);
         },
         error: (erro) => {
           console.error('Erro ao buscar eventos:', erro);

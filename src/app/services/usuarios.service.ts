@@ -29,9 +29,6 @@ export class UsuariosService {
   }
 
   // Outros métodos (criar, atualizar, deletar) podem ser adicionados conforme necessidade
-  curtir(): void {
-    // Lógica para curtir usuário
-    console.log('Usuário curtido');
-  }
+  
 
 }

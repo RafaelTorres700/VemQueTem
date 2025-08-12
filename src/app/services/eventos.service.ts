@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, map } from 'rxjs';
+import { Observable } from 'rxjs';
 
 
 export interface Evento {
@@ -28,14 +28,9 @@ export class EventosService {
   constructor(private http: HttpClient) { }
 
   getEventos(): Observable<Evento[]> {
-    return this.http.get<any>('http://localhost:3000/api/eventos')
-    .pipe(map(res => res.data));
-
+    return this.http.get<Evento[]>('http://localhost:3000/api/eventos');
   }
 
   // Outros métodos (criar, atualizar, deletar) podem ser adicionados conforme necessidade
-  curtir(): void {
-    // Lógica para curtir evento
-    console.log('Evento curtido');
-  }
+  
 }

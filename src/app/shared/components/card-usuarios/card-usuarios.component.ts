@@ -20,10 +20,11 @@ export class CardUsuariosComponent {
   @Output() convidar = new EventEmitter<string>();
   usuarios: any[] = [];
 
-  constructor(private router: Router, private usuariosService: UsuariosService) { }
+  constructor(private router: Router,
+  private usuariosService: UsuariosService
+) { }
 
   ngOnInit(): void {
-    // Só busca todos os usuários se NÃO receber um user via input
     if (!this.user) {
       this.usuariosService.getUsuarios().subscribe((dados: any[]) => {
         this.usuarios = dados;
@@ -33,7 +34,7 @@ export class CardUsuariosComponent {
     }
   }
 
-  contador = 0;
+
 
   calcularIdade(nascimento?: string): number | null {
     const data = nascimento || this.user?.nascimento;

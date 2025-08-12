@@ -1,8 +1,5 @@
 import { Routes } from '@angular/router';
-<<<<<<< HEAD
 import { SidebarComponent } from './layout/sidebar/sidebar.component';
-=======
->>>>>>> d3d215014e0210a7f93e5436da8a567faa7c8af1
 
 export const routes: Routes = [
 
@@ -23,13 +20,10 @@ export const routes: Routes = [
   {
     path: 'create-login',
     loadComponent: () => import('./pages/create-login/create-login.component').then(m => m.CreateLoginComponent)
-<<<<<<< HEAD
   },
   {
     path: 'sidebar',
     loadComponent: () => import('./layout/sidebar/sidebar.component').then(m => m.SidebarComponent)
-=======
->>>>>>> d3d215014e0210a7f93e5436da8a567faa7c8af1
   }
 
 

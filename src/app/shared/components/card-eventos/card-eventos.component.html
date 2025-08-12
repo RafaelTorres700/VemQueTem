@@ -1,8 +1,6 @@
-<p>card-eventos works!</p>
-
 <!-- Card de Evento -->
-<div class="cards-geral" *ngIf="!evento">
-  <div class="user-card" *ngFor="let evento of evento ">
+<div class="cards-geral" *ngIf="eventos && eventos.length > 0">
+  <div class="user-card" *ngFor="let evento of eventos">
     <div class="user-photo">
       <img
         [src]="'http://localhost:3000/uploads/eventos/' + evento.imagem_evento"
@@ -29,12 +27,6 @@
         </svg>
       </button>
     </div>
-
-
-
-
-
-
     <div class="user-info">
       <h3 class="user-name">{{ evento.nome_evento }}</h3>
       <h3 class="location-text">{{ evento.estabelecimento_id }}</h3>
@@ -56,7 +48,6 @@
           {{ evento.beneficios }}
         </span>
       </div>
-
       <div class="card-actions">
         <button
           class="action-btn primary"
@@ -79,38 +70,28 @@
         </button>
       </div>
       <div class="card-actions">
-          <button class="action-btn primary" type="button">
-            <svg
-              class="btn-icon"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-            >
-              <path d="M9 11l3 3l8-8"></path>
-              <path
-                d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"
-              ></path>
-            </svg>
-            Reservar Agora
-          </button>
-        </div>
-
-        <div *ngIf="!eventos || eventos.length === 0" class="empty-state">
-    <i class="fas fa-calendar"></i>
-    <h3>Nenhum evento encontrado</h3>
-    <p>Seja o primeiro a criar um evento!</p>
+        <button class="action-btn primary" type="button">
+          <svg
+            class="btn-icon"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path d="M9 11l3 3l8-8"></path>
+            <path
+              d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"
+            ></path>
+          </svg>
+          Reservar Agora
+        </button>
+      </div>
+    </div>
   </div>
 </div>
 
-
-
-
-
-
-
-
-
-
-
-
+<div *ngIf="!eventos || eventos.length === 0" class="empty-state">
+  <i class="fas fa-calendar"></i>
+  <h3>Nenhum evento encontrado</h3>
+  <p>Seja o primeiro a criar um evento!</p>
+</div>
