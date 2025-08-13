@@ -32,5 +32,5 @@ export class EventosService {
   }
 
   // Outros métodos (criar, atualizar, deletar) podem ser adicionados conforme necessidade
-  
+
 }
