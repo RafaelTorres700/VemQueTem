@@ -21,8 +21,8 @@ export class CardUsuariosComponent {
   usuarios: any[] = [];
 
   constructor(private router: Router,
-  private usuariosService: UsuariosService
-) { }
+    private usuariosService: UsuariosService
+  ) { }
 
   ngOnInit(): void {
     if (!this.user) {
@@ -56,9 +56,12 @@ export class CardUsuariosComponent {
     this.router.navigate(['/usuarios', { id: user.id }]);
   }
 
+
+
   curtirUsuario(usuario: any): void {
     usuario.isLiked = !usuario.isLiked;
     this.curtir.emit(usuario.id);
+    console.log(`Curtido usuário: ${usuario.id}, status: ${usuario.isLiked ? 'curtido' : 'descurtido'}`);
   }
 
 

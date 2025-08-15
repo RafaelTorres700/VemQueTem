@@ -28,7 +28,7 @@ export class CardEventosComponent implements OnInit {
       this.eventosService.getEventos().subscribe({
         next: (dados: any[]) => {
           this.eventos = dados;
-          console.log('Eventos carregados:', this.eventos);
+
         },
         error: (erro) => {
           console.error('Erro ao buscar eventos:', erro);
@@ -43,10 +43,14 @@ export class CardEventosComponent implements OnInit {
     this.router.navigate(['/eventos', { id: evento.id }]);
   }
 
+
+
   curtirEvento(evento: any): void {
     evento.isLiked = !evento.isLiked;
     this.curtir.emit(evento.id);
+    console.log(`Curtido evento: ${evento.id}, status: ${evento.isLiked ? 'curtido' : 'descurtido'}`);
   }
+
 
 }
 

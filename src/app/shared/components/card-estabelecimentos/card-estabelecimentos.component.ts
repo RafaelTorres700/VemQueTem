@@ -33,14 +33,20 @@ export class CardEstabelecimentosComponent implements OnInit {
   }
 
 
-  curtirEstabelecimento(estabelecimento: any): void {
-    estabelecimento.isLiked = !estabelecimento.isLiked;
-    this.curtir.emit(estabelecimento.id);
-  }
 
-  navegarEstabelecimento(estabelecimento: any): void {
-    console.log('Navegando para o estabelecimento:', estabelecimento);
-    this.estabelecimentoService.estabelecimentoSendoVisto = estabelecimento;
+  navegarEstabelecimento(estab: any): void {
+    console.log('Navegando para o estabelecimento:', estab);
+    this.estabelecimentoService.estabelecimentoSendoVisto = estab;
     this.router.navigate(['/estabelecimentos']);
   }
+
+
+  curtirEstabelecimento(estab: any): void {
+    estab.isLiked = !estab.isLiked;
+    this.curtir.emit(estab.id_estabelecimento);
+    console.log(`Curtido estabelecimento: ${estab.id_estabelecimento}, status: ${estab.isLiked ? 'curtido' : 'descurtido'}`);
+  }
+
+
+
 }
