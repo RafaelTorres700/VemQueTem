@@ -35,6 +35,12 @@ getEstabelecimentos(): Observable<Estabelecimento[]> {
     .pipe(map(res => res.data));
 }
 
+
+
+  getEstabelecimentoPorId(id_estabelecimento: string): Observable<Estabelecimento> {
+    return this.http.get<any>(`http://localhost:3000/api/estabelecimentos/${id_estabelecimento}`)
+      .pipe(map(res => res.data));
+  }
 // Outros métodos (criar, atualizar, deletar) podem ser adicionados conforme necessidade
   curtir(): void {
     // Lógica para curtir estabelecimento

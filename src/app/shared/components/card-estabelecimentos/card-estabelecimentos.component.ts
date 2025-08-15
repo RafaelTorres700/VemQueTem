@@ -1,7 +1,7 @@
 // cards-usuarios.component.ts
 import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { EstabelecimentosService, Estabelecimento } from '../../../services/estabelecimentos.service';
 
 
@@ -20,24 +20,26 @@ export class CardEstabelecimentosComponent implements OnInit {
 
   constructor(
     private router: Router,
+    private route: ActivatedRoute,
     private estabelecimentoService: EstabelecimentosService
   ) { }
 
   ngOnInit(): void {
-    // Busca todos os estabelecimentos ao acessar a rota
-    this.estabelecimentoService.getEstabelecimentos().subscribe((dados: any[]) => {
-      this.estabelecimentos = dados;
-    }, (erro) => {
-      console.error('Erro ao buscar estabelecimentos:', erro);
-    });
+    const id = this.route.snapshot.paramMap.get('id');
+    if (id) {
+      this.estabelecimentoService.getEstabelecimentoPorId(id).subscribe((estab: any) => {
+        this.estabelecimentos = [estab];
+      });
+    } else {
+      this.estabelecimentoService.getEstabelecimentos().subscribe((dados: any[]) => {
+        this.estabelecimentos = dados;
+      });
+    }
   }
 
 
-
   navegarEstabelecimento(estab: any): void {
-    console.log('Navegando para o estabelecimento:', estab);
-    this.estabelecimentoService.estabelecimentoSendoVisto = estab;
-    this.router.navigate(['/estabelecimentos']);
+    this.router.navigate(['/estabelecimentos', estab.id_estabelecimento]);
   }
 
 

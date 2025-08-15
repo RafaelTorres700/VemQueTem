@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import { SidebarComponent } from './layout/sidebar/sidebar.component';
+import { CardEstabelecimentosComponent } from './shared/components/card-estabelecimentos/card-estabelecimentos.component';
 
 export const routes: Routes = [
 
@@ -24,7 +25,10 @@ export const routes: Routes = [
   {
     path: 'sidebar',
     loadComponent: () => import('./layout/sidebar/sidebar.component').then(m => m.SidebarComponent)
-  }
+  },
+  { path: 'estabelecimentos/:id',
+    loadComponent: () => import('./shared/components/card-estabelecimentos/card-estabelecimentos.component').then(m => m.CardEstabelecimentosComponent)
+   }
 
 
 ];
