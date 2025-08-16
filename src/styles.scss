@@ -352,6 +352,8 @@ textarea {
   border: 1px solid rgba(106, 76, 147, 0.2);
   box-shadow: $shadow-glow;
   backdrop-filter: blur(10px);
+  max-width: 400px;
+
 
   &:hover {
     transform: translateY(-8px);

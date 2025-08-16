@@ -1,0 +1,59 @@
+<h1>Conheça nossos eventos</h1>
+
+<section class="carousel-section" *ngIf="eventos && eventos.length">
+  <div class="carousel">
+    <div
+      class="carousel-track"
+      [style.width]="'calc((200px + 30px) * ' + eventos.length * 2 + ')'"
+    >
+      <ng-container *ngFor="let evento of eventos">
+        <div class="carousel-item">
+          <img
+            (click)="navegarEvento(evento)"
+            [src]="
+              'http://localhost:3000/uploads/eventos/' + evento.imagem_evento
+            "
+            [alt]="evento.nome_evento"
+            class="carousel-image"
+          />
+        </div>
+      </ng-container>
+      <ng-container *ngFor="let evento of eventos">
+        <div class="carousel-item">
+          <img
+            (click)="navegarEvento(evento)"
+            [src]="
+              'http://localhost:3000/uploads/eventos/' + evento.imagem_evento
+            "
+            [alt]="evento.nome_evento"
+            class="carousel-image"
+          />
+        </div>
+      </ng-container>
+      <ng-container *ngFor="let evento of eventos">
+        <div class="carousel-item">
+          <img
+            (click)="navegarEvento(evento)"
+            [src]="
+              'http://localhost:3000/uploads/eventos/' + evento.imagem_evento
+            "
+            [alt]="evento.nome_evento"
+            class="carousel-image"
+          />
+        </div>
+      </ng-container>
+      <ng-container *ngFor="let evento of eventos">
+        <div class="carousel-item">
+          <img
+            (click)="navegarEvento(evento)"
+            [src]="
+              'http://localhost:3000/uploads/eventos/' + evento.imagem_evento
+            "
+            [alt]="evento.nome_evento"
+            class="carousel-image"
+          />
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</section>

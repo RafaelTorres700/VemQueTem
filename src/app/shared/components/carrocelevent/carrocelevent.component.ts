@@ -1,17 +1,20 @@
-import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { EventosService } from '../../../services/eventos.service';
+import { CommonModule } from '@angular/common';
+import { Router,ActivatedRoute } from '@angular/router';
+import { CardEventosComponent } from '../card-eventos/card-eventos.component';
+
 
 
 @Component({
-  selector: 'app-card-eventos',
+  selector: 'app-carrocelevent',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './card-eventos.component.html',
-  styleUrls: ['./card-eventos.component.scss']
+  templateUrl: './carrocelevent.component.html',
+  styleUrls: ['./carrocelevent.component.scss']
 })
-export class CardEventosComponent implements OnInit {
+export class CarroceleventComponent implements OnInit {
+
   @Input() evento: any;
   @Output() curtir = new EventEmitter<string>();
   @Output() reservar = new EventEmitter<string>();
