@@ -28,7 +28,10 @@ export class UsuariosService {
     .pipe(map(res => res.data));
   }
 
+  getUsuarioPorId(id: string): Observable<Usuario> {
+    return this.http.get<any>(`http://localhost:3000/api/usuarios/${id}`)
+    .pipe(map(res => res.data));
   // Outros métodos (criar, atualizar, deletar) podem ser adicionados conforme necessidade
-  
+  }
 
 }

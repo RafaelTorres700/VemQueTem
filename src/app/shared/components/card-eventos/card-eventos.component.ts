@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { EventosService } from '../../../services/eventos.service';
 
 
@@ -20,15 +20,25 @@ export class CardEventosComponent implements OnInit {
 
   constructor(
     private router: Router,
+    private route: ActivatedRoute,
     private eventosService: EventosService
   ) { }
 
   ngOnInit(): void {
-    if (!this.evento) {
+    const id = this.route.snapshot.paramMap.get('id');
+    if (id) {
+      this.eventosService.getEventoPorId(+id).subscribe({
+        next: (evento: any) => {
+          this.eventos = [evento];
+        },
+        error: (erro) => {
+          console.error('Erro ao buscar evento:', erro);
+        }
+      });
+    } else {
       this.eventosService.getEventos().subscribe({
         next: (dados: any[]) => {
           this.eventos = dados;
-
         },
         error: (erro) => {
           console.error('Erro ao buscar eventos:', erro);
@@ -37,10 +47,10 @@ export class CardEventosComponent implements OnInit {
     }
   }
 
-
-  navegarEvento(evento: any) {
-    this.eventosService.eventoSendoVisto = evento;
-    this.router.navigate(['/eventos', { id: evento.id }]);
+  navegarEvento(evento: any): void {
+    this.router.navigate(['/eventos', evento.id]);
+    console.log(`Navegando para o evento: ${evento.id}`);
+    
   }
 
 

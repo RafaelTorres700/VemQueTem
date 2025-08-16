@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 
 
 export interface Evento {
@@ -31,6 +31,12 @@ export class EventosService {
     return this.http.get<Evento[]>('http://localhost:3000/api/eventos');
   }
 
+// ...existing code...
+getEventoPorId(id: number): Observable<Evento> {
+  return this.http.get<any>(`http://localhost:3000/api/eventos/${id}`)
+    .pipe(map(res => res.data));
+}
+// ...existing code...
   // Outros métodos (criar, atualizar, deletar) podem ser adicionados conforme necessidade
 
 }

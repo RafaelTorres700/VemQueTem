@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { UsuariosService } from '../../../services/usuarios.service';
 
 
@@ -21,11 +21,19 @@ export class CardUsuariosComponent {
   usuarios: any[] = [];
 
   constructor(private router: Router,
+    private route: ActivatedRoute,
     private usuariosService: UsuariosService
   ) { }
 
   ngOnInit(): void {
-    if (!this.user) {
+    const id = this.route.snapshot.paramMap.get('id');
+    if (id) {
+      this.usuariosService.getUsuarioPorId(id).subscribe((usuario: any) => {
+        this.usuarios = [usuario];
+      }, (erro) => {
+        console.error('Erro ao buscar usuário:', erro);
+      });
+    } else {
       this.usuariosService.getUsuarios().subscribe((dados: any[]) => {
         this.usuarios = dados;
       }, (erro) => {
@@ -51,9 +59,8 @@ export class CardUsuariosComponent {
   }
 
 
-  navegarUsuario(user: any) {
-    this.usuariosService.usuarioSendoVisto = user;
-    this.router.navigate(['/usuarios', { id: user.id }]);
+  navegarUsuario(user: any): void {
+    this.router.navigate(['/usuarios', user.id]);
   }
 
 
